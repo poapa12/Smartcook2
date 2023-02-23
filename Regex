@@ -1,0 +1,12 @@
+import re 
+
+def extract_emails(text):
+  email_regex = r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}'
+  return re.findall(email_regex, text)
+  
+  text = "Pro další informace nás prosím kontaktujte na contact@example.com. Pro podporu nám můžete také poslat e-mail na adresu support@example.com."
+emails = extract_emails(text) 
+
+print("Extrahované e-maily:")
+for email in emails:
+  print(email)
