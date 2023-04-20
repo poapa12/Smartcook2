@@ -1,0 +1,64 @@
+def triangle_area(x1, y1, x2, y2, x3, y3):
+
+    return abs((x1*(y2-y3) + x2*(y3-y1)+ x3*(y1-y2))/2.0)
+
+
+
+
+def largest_triangle(a, b, c, d):
+
+    max_area = 0.0
+
+    max_points = None
+
+    for p1 in [a, b, c]:
+
+        for p2 in [a, b, c]:
+
+            if p1 != p2:
+
+                for p3 in [a, b, c]:
+
+                    if p3 != p1 and p3 != p2:
+
+                        area = triangle_area(p1[0], p1[1], p2[0], p2[1], p3[0], p3[1])
+
+                        if area > max_area:
+
+                            max_area = area
+
+                            max_points = (p1, p2, p3)
+
+    if max_points is None or max_area == 0.0:
+
+        return None
+
+    else:
+
+        return max_points
+
+
+
+
+# testování funkce
+
+a = (1,1)
+
+b = (3,1)
+
+c = (2,2)
+
+d = (2,4)
+
+
+
+
+max_triangle = largest_triangle(a, b, c, d)
+
+if max_triangle is None:
+
+    print("Všechny body jsou na jedné přímce.")
+
+else:
+
+    print(f"Souřadnice bodů největšího trojúhelníka jsou: {max_triangle}.")
